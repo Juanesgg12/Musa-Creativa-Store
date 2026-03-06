@@ -1,0 +1,151 @@
+/* =============================================
+   GLOBAL STYLES — Musa Store
+   Importar en todos los HTML:
+   <link rel="stylesheet" href="css/global.css">
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --black:       #0d0d0d;
+    --off-black:   #1a1a1a;
+    --charcoal:    #2e2e2e;
+    --mid:         #6b6b6b;
+    --silver:      #b0b0b0;
+    --light:       #e8e4df;
+    --cream:       #f5f2ee;
+    --white:       #fdfcfb;
+    --accent:      #c9a96e;
+    --accent-dark: #a07840;
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body:    'DM Sans', sans-serif;
+
+    --radius:  6px;
+    --radius-lg: 12px;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,.06);
+    --shadow-md: 0 6px 24px rgba(0,0,0,.10);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,.14);
+    --transition: 0.25s ease;
+}
+
+html { font-size: 16px; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--cream);
+    color: var(--off-black);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Page wrapper ---- */
+.page-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+}
+
+/* ---- Headings ---- */
+h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    letter-spacing: .02em;
+    color: var(--black);
+    margin-bottom: 8px;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin-top: 12px;
+}
+
+/* ---- Links ---- */
+a {
+    color: var(--accent-dark);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+a:hover { color: var(--accent); }
+
+/* ---- Back link ---- */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .85rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 32px;
+    transition: color var(--transition);
+}
+.back-link:hover { color: var(--accent); }
+.back-link::before {
+    content: '←';
+    font-size: 1rem;
+}
+
+/* ---- Buttons ---- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: .85rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 13px 32px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all var(--transition);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--black);
+    color: var(--white);
+}
+.btn-primary:hover {
+    background: var(--accent);
+    color: var(--white);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--black);
+    border: 1.5px solid var(--charcoal);
+}
+.btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background: transparent;
+    color: #b94040;
+    border: 1.5px solid #b94040;
+}
+.btn-danger:hover {
+    background: #b94040;
+    color: var(--white);
+    transform: translateY(-1px);
+}

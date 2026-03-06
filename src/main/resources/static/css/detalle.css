@@ -1,0 +1,99 @@
+/* =============================================
+   DETALLE.CSS — Detalle del Producto
+   ============================================= */
+
+/* Contenedor principal del detalle */
+#producto {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    max-width: 640px;
+    box-shadow: var(--shadow-md);
+    margin-top: 40px;
+    border: 1px solid rgba(0,0,0,.04);
+}
+
+/* Nombre del producto (si se renderiza como h2) */
+#producto h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 20px;
+    line-height: 1.15;
+}
+
+/* Precio */
+#producto .precio,
+#producto [class*="precio"],
+#producto p:has(strong:first-child) {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--accent-dark);
+    letter-spacing: .02em;
+    margin-bottom: 16px;
+}
+
+/* Separador decorativo */
+#producto hr,
+#producto::before {
+    border: none;
+    border-top: 1px solid var(--light);
+    margin: 24px 0;
+}
+
+/* Párrafos de detalle */
+#producto p {
+    font-size: .95rem;
+    color: var(--charcoal);
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+#producto p strong {
+    font-weight: 500;
+    color: var(--black);
+    font-size: .75rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* Etiqueta de ID */
+#producto .product-id {
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 20px;
+}
+
+/* Acciones (editar / eliminar) */
+#producto .actions,
+#producto .card-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+/* Enlace volver */
+.back-from-detail {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .82rem;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 28px;
+    transition: color var(--transition);
+}
+.back-from-detail:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+    #producto {
+        padding: 32px 20px;
+    }
+}
