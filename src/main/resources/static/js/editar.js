@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
@@ -11,11 +10,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Cargar datos actuales
     fetch(`http://localhost:8080/api/productos/${id}`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Producto no encontrado");
+            }
+            return response.json();
+        })
         .then(data => {
+            document.getElementById("imagenUrl").value = data.imagenUrl || "";
             document.getElementById("nombre").value = data.nombre;
             document.getElementById("precio").value = data.precio;
             document.getElementById("descripcion").value = data.descripcion;
+        })
+        .catch(() => {
+            alert("No se pudo cargar el producto");
+            window.location.href = "index.html";
         });
 
     // Manejar actualización
@@ -25,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
         const productoActualizado = {
+            imagenUrl: document.getElementById("imagenUrl").value,
             nombre: document.getElementById("nombre").value,
             precio: parseFloat(document.getElementById("precio").value),
             descripcion: document.getElementById("descripcion").value
@@ -43,11 +53,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 return response.json();
             })
-            .then(data => {
+            .then(() => {
                 alert("Producto actualizado correctamente");
                 window.location.href = "index.html";
             })
-            .catch(error => {
+            .catch(() => {
                 alert("Error al actualizar");
             });
 

@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const producto = {
             nombre: document.getElementById("nombre").value,
             precio: parseFloat(document.getElementById("precio").value),
-            descripcion: document.getElementById("descripcion").value
+            descripcion: document.getElementById("descripcion").value,
+            imagenUrl: document.getElementById("imagenUrl").value
+
         };
 
         fetch("http://localhost:8080/api/productos", {

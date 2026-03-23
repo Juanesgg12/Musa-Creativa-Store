@@ -1,0 +1,184 @@
+/* =============================================
+   GESTION.CSS — Gestión de Productos
+   ============================================= */
+
+/* ---- Layout general ---- */
+body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+}
+
+/* ---- Títulos de sección ---- */
+h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--black);
+    letter-spacing: .02em;
+    margin-bottom: 20px;
+}
+
+/* ============================================
+   SECCIÓN CREAR
+   ============================================ */
+
+/* Agrupa los inputs + botón crear — añade class="create-section" al <div> que rodea esta sección,
+   o aplica estilos directamente ya que están en el flujo del body */
+
+/* Inputs del formulario inline */
+#nombre,
+#precio,
+#descripcion {
+    display: inline-block;
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: .95rem;
+    color: var(--off-black);
+    background: var(--white);
+    border: 1.5px solid var(--light);
+    border-radius: var(--radius);
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    margin-bottom: 12px;
+    margin-right: 8px;
+}
+
+#nombre        { width: 220px; }
+#precio        { width: 130px; }
+#descripcion   { width: 240px; }
+
+#nombre:focus,
+#precio:focus,
+#descripcion:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(201,169,110,.15);
+    background: var(--white);
+}
+
+#nombre::placeholder,
+#precio::placeholder,
+#descripcion::placeholder {
+    color: var(--silver);
+}
+
+/* Botón Crear */
+button[onclick="crearProducto()"] {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 28px;
+    font-family: var(--font-body);
+    font-size: .82rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    vertical-align: middle;
+    margin-bottom: 12px;
+}
+button[onclick="crearProducto()"]:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Divisor */
+hr {
+    border: none;
+    border-top: 1px solid var(--light);
+    margin: 36px 0;
+}
+
+/* ============================================
+   LISTA DE PRODUCTOS
+   ============================================ */
+
+#lista-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 8px;
+}
+
+/* Tarjeta — añade class="card" en el div del forEach en gestion.js */
+#lista-productos .card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 24px 20px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,.04);
+    transition: box-shadow var(--transition), transform var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+#lista-productos .card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+/* Nombre dentro de la tarjeta */
+#lista-productos .card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* Precio */
+#lista-productos .card p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent-dark);
+    margin: 0;
+}
+
+/* Botón Eliminar */
+#lista-productos .card button {
+    align-self: flex-start;
+    margin-top: 12px;
+    padding: 9px 20px;
+    font-family: var(--font-body);
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    background: transparent;
+    color: #b94040;
+    border: 1.5px solid #b94040;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+#lista-productos .card button:hover {
+    background: #b94040;
+    color: var(--white);
+    transform: translateY(-1px);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 700px) {
+    #nombre,
+    #precio,
+    #descripcion {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    button[onclick="crearProducto()"] {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #lista-productos {
+        grid-template-columns: 1fr;
+    }
+}

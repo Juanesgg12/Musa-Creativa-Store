@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/gestion.css">
+    <title>Gestion de Productos</title>
+</head>
+<body>
+
+<h1>Gestión de Productos</h1>
+
+<h2>Crear Producto</h2>
+
+<input type="text" id="nombre" placeholder="Nombre">
+<input type="number" id="precio" placeholder="Precio">
+<input type="text" id="descripcion" placeholder="Descripción">
+<input type="text" id="imagenUrl" placeholder="URL de la imagen">
+
+<button onclick="crearProducto()">Crear</button>
+
+<hr>
+
+<h2>Lista de Productos</h2>
+
+<div id="lista-productos"></div>
+
+<script src="js/gestion.js"></script>
+
+</body>
+</html>

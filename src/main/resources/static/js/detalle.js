@@ -3,12 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function cargarDetalle() {
-
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
+    const productoContainer = document.getElementById("producto");
+    const imgDetalle = document.getElementById("imgDetalle");
 
     if (!id) {
-        document.getElementById("producto").innerHTML = "ID no proporcionado";
+        productoContainer.innerHTML = "ID no proporcionado";
         return;
     }
 
@@ -20,14 +21,18 @@ function cargarDetalle() {
             return response.json();
         })
         .then(data => {
-            document.getElementById("producto").innerHTML = `
+            productoContainer.innerHTML = `
                 <p><strong>ID:</strong> ${data.id}</p>
                 <p><strong>Nombre:</strong> ${data.nombre}</p>
                 <p><strong>Precio:</strong> ${data.precio}</p>
-                <p><strong>Descripción:</strong> ${data.descripcion}</p>
+                <p><strong>Descripcion:</strong> ${data.descripcion}</p>
             `;
+
+            if (imgDetalle) {
+                imgDetalle.src = data.imagenUrl || "";
+            }
         })
-        .catch(error => {
-            document.getElementById("producto").innerHTML = "Producto no encontrado";
+        .catch(() => {
+            productoContainer.innerHTML = "Producto no encontrado";
         });
 }

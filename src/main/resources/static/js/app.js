@@ -12,6 +12,8 @@ function cargarProductos() {
             data.forEach(producto => {
                 contenido += `
                     <div class="card">
+                        <img src="${producto.imagenUrl}" class="card-img" alt="Imagen del producto">
+                        
                         <h3>${producto.nombre}</h3>
                         <p>Precio: ${producto.precio}</p>
 
